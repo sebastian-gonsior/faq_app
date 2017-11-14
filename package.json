@@ -1,0 +1,26 @@
+{
+  "name": "faq-app",
+  "version": "0.0.1",
+  "description": "FAQ App",
+  "author": "Sebastian Gonsior",
+  "private": true,
+  "dependencies": {},
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": "*"
+  },
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "load-grunt-tasks": "~3.5.2",
+    "time-grunt": "~1.4.0",
+    "grunt-contrib-clean": "~1.1.0",
+    "grunt-contrib-connect": "~1.0.2",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-sass": "~1.0.0",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-html": "~8.6.1",
+    "grunt-timer": "~0.6.0",
+    "grunt-includes": "~1.0.0",
+    "assemble": "~0.4.42"
+  }
+}
