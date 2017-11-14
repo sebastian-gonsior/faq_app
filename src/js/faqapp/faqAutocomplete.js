@@ -45,6 +45,7 @@
             });
 
             // remove specialchars
+            // some dirty regex
             questionString = questionString.replace(/(<([^>]+)>)/ig, '');
             answerString = answerString.replace(/(<([^>]+)>)/ig, '');
 
@@ -60,23 +61,26 @@
 
             // remove doublicates
             var uniqueStringArray = [];
-            var uniqueAnswerStringArray = [];
 
+            // contact question and answer array
             var searchText = questionStringArray.concat(answerStringArray);
 
+            // remove doubles
             $.each(searchText, function (i, el) {
                 if ($.inArray(el, uniqueStringArray) === -1) {
                     uniqueStringArray.push(el);
                 }
             });
 
+            // sort it, looks better in overlay
             uniqueStringArray.sort();
 
+            // if there are more than two chars, look for results on keypu
             base.$input.on('keyup', function () {
                 var value = $(this).val();
 
                 if (value.length > 2) {
-                    base.findResults(value, uniqueStringArray);
+                    findResults(value, uniqueStringArray);
                 }
             })
 
@@ -85,16 +89,14 @@
         // call init function to instantiate the module
         base.init();
 
-
         // find results from questions
-        base.findResults = function (val, src) {
+        function findResults (val, src) {
             $.each(src, function (srcKey, srcEntry) {
                 if (srcEntry.toLowerCase().indexOf(val.toLowerCase()) >= 0) {
                     console.log(srcEntry);
                 }
             });
-
-        };
+        }
     };
 
     /**

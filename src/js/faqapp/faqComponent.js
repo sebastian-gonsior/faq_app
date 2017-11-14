@@ -39,7 +39,6 @@
             base.$categories = base.$el.find('[data-categories]');
             base.$content = base.$el.find('[data-content]');
 
-
             // draw categories and content
             $.each( base.faqObj, function( key, value ) {
                 var categoryId = key;
@@ -54,6 +53,7 @@
             // on click hide or show content
             $("[data-category]").on('click', function () {
 
+                // set visibility for results
                 base.$el.parents('body').find('[data-content]').show();
                 base.$el.parents('body').find('[data-searchresult]').hide();
 
