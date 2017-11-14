@@ -95,6 +95,9 @@
                     base.$searchResult.append('<div class="faq-content__question">' + value.frage + '</div>');
                     base.$searchResult.append('<div class="faq-content__answer">' + value.antwort + '</div>');
                 });
+
+                // mark words
+
             } else {
                 base.$searchResult.append('<h3>Nichts gefunden :(</h3>');
             }

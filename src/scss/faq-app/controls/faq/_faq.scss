@@ -1,0 +1,35 @@
+
+@import "../../globals/globals";
+$faq-category-width: 25%;
+$faq-category-padding: 8px;
+
+.faq {
+    display: flex;
+    flex-direction: row;
+
+    &__categories {
+        min-width: $faq-category-width;
+        max-width: $faq-category-width;
+        width: auto;
+        padding: $faq-category-padding;
+    }
+    &__content-wrapper {
+        h2 { padding: 0; margin: 0; }
+    }
+    &__search {}
+    &__content {}
+    
+    &-content__question {
+        background: orchid;
+        &:hover {
+            &+.faq-content__answer {
+                height: 100%;
+            }
+        }
+    }
+    &-content__answer {
+        background: red;
+        height: 0;
+        overflow: hidden;
+    }
+}
