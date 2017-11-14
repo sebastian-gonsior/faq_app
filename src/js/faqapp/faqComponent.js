@@ -53,6 +53,10 @@
 
             // on click hide or show content
             $("[data-category]").on('click', function () {
+
+                base.$el.parents('body').find('[data-content]').show();
+                base.$el.parents('body').find('[data-searchresult]').hide();
+
                 // Remove all active classes
                 $("[data-category]").each(function () {
                     $(this).removeClass('active');
@@ -61,7 +65,7 @@
                 $(this).addClass('active');
                 var activeCat = $(this).data('category');
                 // Show & hide content
-                $('.faq__content > div').each(function(){
+                $('[data-content] > div').each(function(){
                     if ($(this).data('category') === activeCat) {
                         $(this).show()
                     } else {

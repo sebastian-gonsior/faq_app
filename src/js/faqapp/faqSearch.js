@@ -34,15 +34,11 @@
             // Access to jQuery and DOM versions of element
             base.el = el;
             base.$el = jQuery(el);
-            base.$searchResult = base.$el.parents().find('.searchresult');
-            base.$input = base.$el.parents().find('#autocomplete');
-
-            // get DOM elements to render results
+            base.$searchResult = base.$el.parents('body').find('.searchresult');
             base.$input = base.$el.find('#autocomplete');
 
             base.$el.submit(function (event) {
-                var value = base.$input.val();
-                updateSearchResult(value);
+                updateSearchResult(base.$input.val());
                 event.preventDefault();
             });
 
@@ -53,41 +49,55 @@
 
         function updateSearchResult (resultObj) {
 
-            var searchValues = resultObj.split(' ');
-            var result = [];
+            // set visibility for results
+            base.$el.parents('body').find('.faq__content').hide();
+            base.$el.parents('body').find('.faq__search').show();
 
+            // array as searchvalues, seperated by space
+            var searchValues = resultObj.split(' ');
+            // variable for results
+            var result = [];
+            // remove doubles from results and store it in this var
+            var uniqueResults = [];
+
+            // remove last item if its empty (if last char was ' ' in input)
             if (searchValues[searchValues.length - 1] === "") {
                 searchValues.pop();
             }
 
+            // some iterations over arrays to filter results
             $.each(searchValues, function (i, searchValue) {
-                if (searchValue.length > 2) {
-                    $.each(base.faqObj, function (index, category) {
-                        $.each(category.fragen, function (key, value) {
-                            if (value.frage.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0 || value.antwort.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0) {
-                                result.push(value);
-                            }
-                        });
+                $.each(base.faqObj, function (index, category) {
+                    $.each(category.fragen, function (key, value) {
+                        if (value.frage.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0 ||
+                            value.antwort.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0) {
+                            // push resuts in array
+                            result.push(value);
+                        }
                     });
-                }
+                });
             });
 
-            var uniqueRes = [];
-
+            // kick doubles out
             $.each(result, function (i, el) {
-                if ($.inArray(el, uniqueRes) === -1) {
-                    uniqueRes.push(el);
+                if ($.inArray(el, uniqueResults) === -1) {
+                    uniqueResults.push(el);
                 }
             });
 
+            // clear result dom element
             base.$searchResult.empty();
 
-            // draw categories and content
-            $.each(uniqueRes, function (key, value) {
-                base.$searchResult.append('<div class="faq-content__question">' + value.frage + '</div>');
-                base.$searchResult.append('<div class="faq-content__answer">' + value.antwort + '</div>');
-            });
-
+            // append results in result dom element if there is a result
+            if (uniqueResults.length !== 0) {
+                // draw categories and content
+                $.each(uniqueResults, function (key, value) {
+                    base.$searchResult.append('<div class="faq-content__question">' + value.frage + '</div>');
+                    base.$searchResult.append('<div class="faq-content__answer">' + value.antwort + '</div>');
+                });
+            } else {
+                base.$searchResult.append('<h3>Nichts gefunden :(</h3>');
+            }
         }
     };
 
