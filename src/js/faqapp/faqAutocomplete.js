@@ -32,6 +32,8 @@
             // get questions for autocomplete
             base.$question = base.$el.parents('body').find('.faq-content__question');
             base.$answer = base.$el.parents('body').find('.faq-content__answer');
+            base.$dialog = base.$el.parents('body').find('.autocomplete__dialog');
+            base.$form = base.$el.parents('body').find('#searchform');
 
             var questionString = '';
             var answerString = '';
@@ -77,11 +79,24 @@
 
             // if there are more than two chars, look for results on keypu
             base.$input.on('keyup', function () {
-                var value = $(this).val();
-
-                if (value.length > 2) {
-                    findResults(value, uniqueStringArray);
+                if ($(this).val().length > 2) {
+                    findResults($(this).val(), uniqueStringArray);
                 }
+            });
+
+            base.$input.on('blur', function () {
+                base.$dialog.removeClass('active');
+            });
+
+            base.$input.on('focus', function () {
+                if ($(this).val().length > 2) {
+                    findResults($(this).val(), uniqueStringArray);
+                }
+            });
+
+            base.$dialog.on('click', '.autocomplete__item', function () {
+                base.$input.val($(this).html());
+                base.$form.submit();
             })
 
         };
@@ -91,9 +106,11 @@
 
         // find results from questions
         function findResults (val, src) {
+            base.$dialog.empty();
             $.each(src, function (srcKey, srcEntry) {
                 if (srcEntry.toLowerCase().indexOf(val.toLowerCase()) >= 0) {
-                    console.log(srcEntry);
+                    base.$dialog.addClass('active');
+                    base.$dialog.append('<li class="autocomplete__item">'+srcEntry+'</li>');
                 }
             });
         }

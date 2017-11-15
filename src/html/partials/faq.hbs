@@ -1,7 +1,10 @@
 <div class="faq" data-faqmodule>
-    <div class="faq__categories" data-categories></div>
+    <div class="faq__categories-wrapper">
+        <div class="faq__categories" data-categories></div>
+        {{> autocomplete}}
+    </div>
     <div class="faq__content-wrapper">
-        <h2>Allgemein</h2>
+        <h2>Alle Themen</h2>
         <div class="faq__search" data-searchresult>
             {{> searchcontainer}}
         </div>

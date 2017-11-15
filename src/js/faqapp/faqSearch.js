@@ -53,6 +53,8 @@
             base.$el.parents('body').find('.faq__content').hide();
             base.$el.parents('body').find('.faq__search').show();
 
+            base.$el.parents('body').find('.faq__content-wrapper > h2').html('Suche nach: ' + resultObj);
+
             // array as searchvalues, seperated by space
             var searchValues = resultObj.split(' ');
             // variable for results

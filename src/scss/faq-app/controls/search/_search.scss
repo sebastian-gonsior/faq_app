@@ -1,0 +1,75 @@
+@import "../../globals/globals";
+
+$faq-category-width: 25%;
+$faq-padding: 12px 24px;
+$faq-category-item-padding: 10px 8px 8px 30px;
+
+$faq-category-height: 28px;
+$faq-category-indicator-size: 15px;
+
+$faq-transitionspeed: 150ms;
+
+.autocomplete__wrapper {
+    margin: 10px 0;
+    padding: 12px;
+    background: $color-lightblue;
+    border-radius: 10px;
+    position: relative;
+
+    #searchform {
+        position: relative;
+        label {
+            display: block;
+        }
+        input[type=text] {
+            border: 1px solid $color-darkblue;
+            height: 20px;
+            padding: 5px;
+            line-height: 15px;
+            width: calc(100% - 60px);
+        }
+        input[type=submit] {
+            border: 1px solid $color-darkblue;
+            height: 32px;
+            width: 40px;
+            background: $color-darkblue;
+            color: $color-white;
+            padding: 5px;
+            line-height: 15px;
+            //border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            position: relative;
+            outline: 1px solid $color-white;
+            outline-offset: -2px;
+        }
+    }
+    .autocomplete__dialog {
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        width: calc(100% - 74px);
+        background: $color-white;
+        border: 1px solid $color-black;
+        margin-top: -1px;
+        max-height: 300px;
+        overflow: auto;
+        opacity: 0;
+        transition: opacity 150ms;
+
+        &.active {
+            opacity: 1;
+        }
+
+        li {
+            list-style: none;
+            padding: 5px;
+            margin: 0;
+
+            &:hover {
+                cursor: pointer;
+                background: $color-lightblue;
+            }
+        }
+    }
+}

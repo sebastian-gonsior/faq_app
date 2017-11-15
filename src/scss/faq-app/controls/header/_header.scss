@@ -2,5 +2,20 @@
 @import "../../globals/globals";
 
 .header {
+    height: 75px;
+    border-bottom: 22px solid $color-darkblue;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
 
+    &:after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        bottom: -22px;
+        width: 100%;
+        background: $color-mediumblue;
+        left: 0;
+    }
 }

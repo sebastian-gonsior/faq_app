@@ -1,26 +1,8 @@
-/* Webfont: Regular */
-@font-face {
-    font-family: 'FaqApp';
-    src: url('../font/xxx/FaqApp-Regular.woff') format('woff');
+html {
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.2;
+    color: $color-black;
     font-style: normal;
     font-weight: 400;
-    text-rendering: optimizeLegibility;
-}
-
-/* Webfont: FaqAppCondensed Bold */
-@font-face {
-    font-family: 'FaqApp';
-    src: url('../font/xxx/FaqAppCondensed-Bold.woff') format('woff');
-    font-style: normal;
-    font-weight: 500;
-    text-rendering: optimizeLegibility;
-}
-
-/* Webfont: FaqApp Bold */
-@font-face {
-    font-family: 'FaqApp';
-    src: url('../font/xxx/FaqApp-Bold.woff') format('woff');
-    font-style: normal;
-    font-weight: 700;
-    text-rendering: optimizeLegibility;
 }

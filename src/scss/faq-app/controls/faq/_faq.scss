@@ -1,35 +1,157 @@
-
 @import "../../globals/globals";
+
 $faq-category-width: 25%;
-$faq-category-padding: 8px;
+$faq-padding: 12px 24px;
+$faq-category-item-padding: 10px 8px 8px 30px;
+
+$faq-category-height: 28px;
+$faq-category-indicator-size: 15px;
+
+$faq-transitionspeed: 150ms;
 
 .faq {
-    display: flex;
+    display:        flex;
     flex-direction: row;
 
     &__categories {
-        min-width: $faq-category-width;
-        max-width: $faq-category-width;
         width: auto;
-        padding: $faq-category-padding;
+
+        > div {
+            border-top:    1px solid $color-darkblue;
+            border-bottom: 1px solid $color-darkblue;
+            padding:       $faq-category-item-padding;
+            color:         $color-darkblue;
+            position:      relative;
+            transition:    all $faq-transitionspeed;
+            overflow:      hidden;
+            text-overflow: ellipsis;
+
+            &:before {
+                transition:    all $faq-transitionspeed;
+                content:       '';
+                width:         $faq-category-indicator-size + 2;
+                height:        $faq-category-indicator-size;
+                background:    $color-mediumblue;
+                border-radius: 25%;
+                position:      absolute;
+                left:          5px;
+                top:           9px;
+                bottom:        0;
+                margin:        0 auto;
+            }
+
+            &:after {
+                content:      '';
+                width:        0;
+                height:       0;
+                border-style: solid;
+                border-width: 3px 0 3px 6px;
+                border-color: transparent transparent transparent $color-white;
+                position:     absolute;
+                left:         (($faq-category-indicator-size + 2) / 2) + 2px;
+                top:          13px;
+                bottom:       0;
+                margin:       0 auto;
+            }
+
+            &.active {
+                color: $color-black;
+                &:before {
+                    background: $color-darkblue;
+                }
+            }
+
+            &:hover {
+                cursor:     pointer;
+                background: $color-lightblue;
+
+                &:before {
+                    background: $color-darkblue;
+                }
+            }
+
+            + div {
+                border-top: none;
+            }
+
+        }
+
+        &-wrapper {
+            padding: $faq-padding;
+        }
+
     }
     &__content-wrapper {
-        h2 { padding: 0; margin: 0; }
+        padding:      $faq-padding;
+        padding-left: 0;
+        flex-basis: 100%;
+
+        h2 {
+            color:                   $color-white;
+            padding:                 $faq-category-item-padding;
+            background:              $color-darkblue;
+            font-weight:             400;
+            font-size:               16px;
+            margin:                  0;
+            border-top-right-radius: 20px;
+            border-bottom:           1px solid $color-white;
+        }
     }
-    &__search {}
-    &__content {}
-    
+
     &-content__question {
-        background: orchid;
+        padding:       $faq-category-item-padding;
+        padding-left:  35px;
+        color:         $color-darkblue;
+        background:    $color-lightblue;
+        border-top:    1px solid $color-white;
+        border-bottom: 1px solid $color-white;
+        position:      relative;
+
+        &:before {
+            transition:    all $faq-transitionspeed;
+            content:       '';
+            width:         $faq-category-indicator-size + 2;
+            height:        $faq-category-indicator-size;
+            background:    $color-mediumblue;
+            border-radius: 25%;
+            position:      absolute;
+            left:          10px;
+            top:           9px;
+            bottom:        0;
+            margin:        0 auto;
+        }
+
+        &:after {
+            content:      '';
+            width:        0;
+            height:       0;
+            border-style: solid;
+            border-width: 3px 0 3px 6px;
+            border-color: transparent transparent transparent $color-white;
+            position:     absolute;
+            left:         (($faq-category-indicator-size + 2) / 2) + 7.5px;
+            top:          13px;
+            bottom:       0;
+            margin:       0 auto;
+        }
+
         &:hover {
-            &+.faq-content__answer {
+            cursor: pointer;
+
+            &:before {
+                background: $color-darkblue;
+            }
+        }
+
+        &.active {
+            & + .faq-content__answer {
                 height: 100%;
             }
         }
     }
     &-content__answer {
         background: red;
-        height: 0;
-        overflow: hidden;
+        height:     0;
+        overflow:   hidden;
     }
 }

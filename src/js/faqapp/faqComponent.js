@@ -57,6 +57,8 @@
                 base.$el.parents('body').find('[data-content]').show();
                 base.$el.parents('body').find('[data-searchresult]').hide();
 
+                base.$el.parents('body').find('.faq__content-wrapper > h2').html($(this).html());
+
                 // Remove all active classes
                 $("[data-category]").each(function () {
                     $(this).removeClass('active');

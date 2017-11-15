@@ -88,7 +88,7 @@ module.exports = function (grunt) {
             options: {
                 layoutdir: 'src/html/layouts',
                 partials: "src/html/partials/**/*.hbs",
-                layout: "base-layout.hbs",
+                layout: "faqapp-layout.hbs",
                 assets: "src/assets"
             },
             site: {
