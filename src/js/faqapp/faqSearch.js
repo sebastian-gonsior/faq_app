@@ -71,7 +71,7 @@
             $.each(searchValues, function (i, searchValue) {
                 $.each(base.faqObj, function (index, category) {
                     $.each(category.fragen, function (key, value) {
-                        if (value.frage.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0 &&
+                        if (value.frage.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0 ||
                             value.antwort.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0) {
                             // push resuts in array
                             result.push(value);
