@@ -50,14 +50,16 @@
                 });
             });
 
+            $('.faq__categories > [data-category]').on('click', function () {
+                base.$el.parents('body').find('.faq__content-wrapper > h2').html($(this).html());
+            });
+
             // on click hide or show content
             $("[data-category]").on('click', function () {
 
                 // set visibility for results
                 base.$el.parents('body').find('[data-content]').show();
                 base.$el.parents('body').find('[data-searchresult]').hide();
-
-                base.$el.parents('body').find('.faq__content-wrapper > h2').html($(this).html());
 
                 // Remove all active classes
                 $("[data-category]").each(function () {

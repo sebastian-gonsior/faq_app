@@ -144,13 +144,22 @@ $faq-transitionspeed: 150ms;
         }
 
         &.active {
+            font-weight: bold;
+            color: $color-black;
+            background: $color-mediumblue;
+            border-color: $color-mediumblue;
+
+            &:before {
+                background: $color-darkblue;
+            }
             & + .faq-content__answer {
                 height: 100%;
+                padding: 5px 35px 20px 35px;
             }
         }
     }
     &-content__answer {
-        background: red;
+        background: $color-mediumblue;
         height:     0;
         overflow:   hidden;
     }
