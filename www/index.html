@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="libs/jquery/jquery-3.2.1.min.js"></script>
+    <script src="data/daten.js"></script>
+
+    <script src="js/init.js"></script>
+    <script src="js/faqapp/faqComponent.js"></script>
+    <script src="js/faqapp/faqAutocomplete.js"></script>
+    <script src="js/faqapp/faqSearch.js"></script>
+    <script src="js/faqapp/faqAccordion.js"></script>
+
+</head>
+<body>
+    
+<div class="header">
+    <img src="images/header_logo.png" alt="logo" title="logo">
+</div>
+<div class="faq" data-faqmodule>
+    <div class="faq__categories-wrapper">
+        <div class="faq__categories" data-categories></div>
+        <div class="autocomplete__wrapper" data-autocompletemodule>
+    <form id="searchform" action="">
+        <label for="autocomplete">Suche: </label>
+        <input id="autocomplete" type="text" autocomplete="off" name="search" value="" placeholder="Search...">
+        <input type="submit" value="Go">
+    </form>
+    <ul class="autocomplete__dialog" data-autocompletedialog></ul>
+</div>
+    </div>
+    <div class="faq__content-wrapper">
+        <h2>Alle Themen</h2>
+        <div class="faq__search" data-searchresult>
+            <div class="searchresult"></div>
+        </div>
+        <div class="faq__content" data-content></div>
+    </div>
+</div>
+</body>
+</html>
